@@ -8,5 +8,10 @@
         "id": "physics-final-2020",
         "name": "Physics Final Exam (2020)",
         "file": "exams/physics-final-2020.html"
+    },
+    {
+        "id": "maths-final-2020",
+        "name": "Maths Final Exam (2020)",
+        "file": "exams/maths-final-2020.html"
     }
 ]
