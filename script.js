@@ -19,11 +19,21 @@ function loadExam(examId) {
         .then(html => {
             // Display the exam in the exam container
             document.getElementById("exam-container").innerHTML = html;
+
+            // Switch to the exam screen
+            document.getElementById("home-screen").style.display = "none";
+            document.getElementById("exam-screen").style.display = "block";
         })
         .catch(error => {
             console.error("Error loading exam:", error);
             document.getElementById("exam-container").innerHTML = "<p>Error loading exam. Please try again.</p>";
         });
+}
+
+// Function to go back to the home screen
+function goBack() {
+    document.getElementById("exam-screen").style.display = "none";
+    document.getElementById("home-screen").style.display = "block";
 }
 
 // Add event listener to the "Get Started" button

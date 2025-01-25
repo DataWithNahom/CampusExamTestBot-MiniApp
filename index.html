@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <!-- Home Screen -->
+    <div id="home-screen" class="container">
         <h1>Welcome to Campus Exam Test Bot!</h1>
         <p>Access past university exams here.</p>
 
@@ -17,10 +18,14 @@
             <li><button onclick="loadExam('logic-mid-exam-2019')">Logic and Critical Thinking Mid Exam (2019)</button></li>
             <!-- Add more exams here as needed -->
         </ul>
+    </div>
 
-        <!-- Container to Display Selected Exam -->
+    <!-- Exam Screen -->
+    <div id="exam-screen" class="container" style="display: none;">
+        <button id="back-button" onclick="goBack()">Back to Home</button>
         <div id="exam-container" class="exam-container"></div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

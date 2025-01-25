@@ -64,3 +64,12 @@ button:hover {
 .exam-container .options {
     margin-left: 20px;
 }
+
+#back-button {
+    background-color: #dc3545; /* Red color for the back button */
+    margin-bottom: 20px;
+}
+
+#back-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
