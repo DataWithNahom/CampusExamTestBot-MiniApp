@@ -6,9 +6,16 @@ tg.expand();
 
 // Function to load an exam
 function loadExam(examId) {
-    // Use the correct path for GitHub Pages
-    fetch(`/CampusExamTestBot-MiniApp/exams/${examId}.html`)
-        .then(response => response.text())
+    // Use the raw GitHub URL to fetch the exam HTML
+    const rawUrl = `https://raw.githubusercontent.com/DataWithNahom/CampusExamTestBot-MiniApp/main/exams/${examId}.html`;
+    
+    fetch(rawUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to load exam");
+            }
+            return response.text();
+        })
         .then(html => {
             // Display the exam in the exam container
             document.getElementById("exam-container").innerHTML = html;
