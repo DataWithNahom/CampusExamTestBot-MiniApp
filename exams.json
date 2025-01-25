@@ -1,0 +1,12 @@
+[
+    {
+        "id": "logic-mid-exam-2019",
+        "name": "Logic and Critical Thinking Mid Exam (2019)",
+        "file": "exams/logic-mid-exam-2019.html"
+    },
+    {
+        "id": "physics-final-2020",
+        "name": "Physics Final Exam (2020)",
+        "file": "exams/physics-final-2020.html"
+    }
+]

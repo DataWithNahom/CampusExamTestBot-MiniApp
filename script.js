@@ -4,6 +4,29 @@ const tg = window.Telegram.WebApp;
 // Expand the mini-app to full screen
 tg.expand();
 
+// Function to load the list of exams
+function loadExams() {
+    fetch('/CampusExamTestBot-MiniApp/exams.json')
+        .then(response => response.json())
+        .then(exams => {
+            const examList = document.getElementById("exam-list");
+            examList.innerHTML = ""; // Clear existing content
+
+            exams.forEach(exam => {
+                const listItem = document.createElement("li");
+                const button = document.createElement("button");
+                button.textContent = exam.name;
+                button.onclick = () => loadExam(exam.id);
+                listItem.appendChild(button);
+                examList.appendChild(listItem);
+            });
+        })
+        .catch(error => {
+            console.error("Error loading exams:", error);
+            document.getElementById("exam-list").innerHTML = "<p>Error loading exams. Please try again.</p>";
+        });
+}
+
 // Function to load an exam
 function loadExam(examId) {
     // Use the raw GitHub URL to fetch the exam HTML
@@ -36,11 +59,5 @@ function goBack() {
     document.getElementById("home-screen").style.display = "block";
 }
 
-// Add event listener to the "Get Started" button
-const getStartedButton = document.getElementById("get-started");
-if (getStartedButton) {
-    getStartedButton.addEventListener("click", () => {
-        tg.sendData("User clicked Get Started");
-        tg.close(); // Close the mini-app after sending data
-    });
-}
+// Load the list of exams when the page loads
+loadExams();
