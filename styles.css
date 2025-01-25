@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -19,6 +19,11 @@ h1 {
     color: #007bff;
 }
 
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
 button {
     background-color: #007bff;
     color: #fff;
@@ -27,8 +32,35 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin: 5px;
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+#exam-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#exam-list li {
+    margin: 10px 0;
+}
+
+.exam-container {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.exam-container h1 {
+    color: #333;
+}
+
+.exam-container .question {
+    margin-bottom: 15px;
+}
+
+.exam-container .options {
+    margin-left: 20px;
 }
