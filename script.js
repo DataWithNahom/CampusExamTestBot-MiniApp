@@ -6,17 +6,24 @@ tg.expand();
 
 // Function to load the list of exams
 function loadExams() {
-    fetch('/CampusExamTestBot-MiniApp/exams.json')
-        .then(response => response.json())
+    // Fetch the exams.json file from GitHub Pages
+    fetch('https://datawithnahom.github.io/CampusExamTestBot-MiniApp/exams.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to load exams");
+            }
+            return response.json();
+        })
         .then(exams => {
             const examList = document.getElementById("exam-list");
             examList.innerHTML = ""; // Clear existing content
 
+            // Dynamically generate the list of exams
             exams.forEach(exam => {
                 const listItem = document.createElement("li");
                 const button = document.createElement("button");
                 button.textContent = exam.name;
-                button.onclick = () => loadExam(exam.id);
+                button.onclick = () => loadExam(exam.file); // Pass the full URL
                 listItem.appendChild(button);
                 examList.appendChild(listItem);
             });
@@ -28,11 +35,9 @@ function loadExams() {
 }
 
 // Function to load an exam
-function loadExam(examId) {
-    // Use the raw GitHub URL to fetch the exam HTML
-    const rawUrl = `https://raw.githubusercontent.com/DataWithNahom/CampusExamTestBot-MiniApp/main/exams/${examId}.html`;
-    
-    fetch(rawUrl)
+function loadExam(examUrl) {
+    // Fetch the exam HTML file from GitHub Pages
+    fetch(examUrl)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Failed to load exam");
@@ -55,6 +60,7 @@ function loadExam(examId) {
 
 // Function to go back to the home screen
 function goBack() {
+    // Switch back to the home screen
     document.getElementById("exam-screen").style.display = "none";
     document.getElementById("home-screen").style.display = "block";
 }
