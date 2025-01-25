@@ -6,7 +6,8 @@ tg.expand();
 
 // Function to load an exam
 function loadExam(examId) {
-    fetch(`exams/${examId}.html`)
+    // Use the correct path for GitHub Pages
+    fetch(`/CampusExamTestBot-MiniApp/exams/${examId}.html`)
         .then(response => response.text())
         .then(html => {
             // Display the exam in the exam container
