@@ -6,15 +6,16 @@ tg.expand();
 
 // Function to load the list of exams
 function loadExams() {
-    // Fetch the exams.json file from GitHub Pages
+    console.log("Loading exams...");
     fetch('https://datawithnahom.github.io/CampusExamTestBot-MiniApp/exams.json')
         .then(response => {
             if (!response.ok) {
-                throw new Error("Failed to load exams");
+                throw new Error(`Failed to load exams: ${response.status} ${response.statusText}`);
             }
             return response.json();
         })
         .then(exams => {
+            console.log("Exams loaded successfully:", exams);
             const examList = document.getElementById("exam-list");
             examList.innerHTML = ""; // Clear existing content
 
@@ -36,15 +37,16 @@ function loadExams() {
 
 // Function to load an exam
 function loadExam(examUrl) {
-    // Fetch the exam HTML file from GitHub Pages
+    console.log(`Loading exam from: ${examUrl}`);
     fetch(examUrl)
         .then(response => {
             if (!response.ok) {
-                throw new Error("Failed to load exam");
+                throw new Error(`Failed to load exam: ${response.status} ${response.statusText}`);
             }
             return response.text();
         })
         .then(html => {
+            console.log("Exam loaded successfully");
             // Display the exam in the exam container
             document.getElementById("exam-container").innerHTML = html;
 
@@ -60,6 +62,7 @@ function loadExam(examUrl) {
 
 // Function to go back to the home screen
 function goBack() {
+    console.log("Going back to home screen");
     // Switch back to the home screen
     document.getElementById("exam-screen").style.display = "none";
     document.getElementById("home-screen").style.display = "block";
